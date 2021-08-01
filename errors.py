@@ -45,3 +45,18 @@ class PayloadValidationErrorCodes(enum.Enum):
         "error_code": "INVALID_VALUE_TYPE",
         "error_message": "'{field}' should be of type {value}"
     }
+
+
+class FibonacciExecutionError(enum.Enum):
+    FIBONACCI_RUNTIME_ERROR ="Error while calculating fibonacci series number"
+    NEGATIVE_NUMBER = "Given input is invalid. Please enter number greater than 0"
+
+
+class FactorialExecutionError(enum.Enum):
+    FACTORIAL_RUNTIME_ERROR ="Error while calculating factorial of given number"
+    NEGATIVE_NUMBER = "Given input is invalid. Please enter number greater than 0"
+
+
+class AckermannExecutionError(enum.Enum):
+    ACKERMANN_RUNTIME_ERROR ="Error while calculating ackermann value of given numbers"
+    NEGATIVE_NUMBER = "Given inputs is invalid. Please enter numbers greater than 0"

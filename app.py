@@ -9,11 +9,6 @@ app = construct_flask_app()
 config = app.config
 api = Api(app)
 
-# app = Flask(__name__)
-#
-# @app.route('/')
-# def hello_world():
-#    return 'Hello World'
 
 from configurations import settings
 from apis import routes

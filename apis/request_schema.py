@@ -7,8 +7,10 @@ from jsonschema import ValidationError
 
 
 from apis import api
+from constants import USER_UUID_HEADER, REQUEST_ID_HEADER
 from errors import PayloadValidationErrorCodes
 
+REGEX = r'^[1-9]\d*$/'
 
 
 def validate(self, data, resolver=None, format_checker=None):
@@ -47,8 +49,27 @@ def format_error(error):
 
 ModelBase.validate = validate
 
+
+class HeaderMap:
+    USER_MAP = reqparse.RequestParser()
+    USER_MAP.add_argument(USER_UUID_HEADER, type=str, required=True, location='headers', help="User's UUID")
+    USER_MAP.add_argument(REQUEST_ID_HEADER, type=str, required=True, location='headers', help="Request UUID")
+
+
 class FibonacciNumberSchema(object):
 
-    GET_FIBO_NUMBER = api.model('FibonacciNumber', {
-        'one' : fields.String(description='testing description', required=True)
-    })
+    fibonacci_parser = reqparse.RequestParser()
+    fibonacci_parser.add_argument('number', type=int, required=True)
+
+
+class FactorialNumberSchema(object):
+
+    factorial_parser = reqparse.RequestParser()
+    factorial_parser.add_argument('factorial_number', type=int, required=True)
+
+
+class AckermannSchema(object):
+
+    ackermann_parser = reqparse.RequestParser()
+    ackermann_parser.add_argument('n', type=int, required=True)
+    ackermann_parser.add_argument('m', type=int, required=True)

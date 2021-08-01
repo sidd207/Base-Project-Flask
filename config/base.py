@@ -41,3 +41,6 @@ LOG_CONFIG = {
    },
    "disable_existing_loggers":False
 }
+
+DEFAULT_USER_UUID ='user-uuid-1234567890'
+DEFAULT_REQUEST_ID = 'request-id-1234567890'

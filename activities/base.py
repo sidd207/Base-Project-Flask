@@ -4,7 +4,6 @@ from abc import ABC, abstractmethod
 from activities.exceptions import ExceptionBase
 from commons.errors import Error
 from commons.response import Response
-from configurations import settings
 from logs import logger
 
 
@@ -62,8 +61,8 @@ class ActivityBase(ABC):
        if not self.response.errors:
            self._execute()
 
-       if not self.response.errors:
-           self._publish_to_topics()
+       # if not self.response.errors:
+       #     self._publish_to_topics()
 
        return self.response
 
