@@ -9,6 +9,7 @@ from jsonschema import ValidationError
 from apis import api
 from constants import USER_UUID_HEADER, REQUEST_ID_HEADER
 from errors import PayloadValidationErrorCodes
+from config.base import DEFAULT_USER_UUID, DEFAULT_REQUEST_ID
 
 REGEX = r'^[1-9]\d*$/'
 
@@ -52,8 +53,10 @@ ModelBase.validate = validate
 
 class HeaderMap:
     USER_MAP = reqparse.RequestParser()
-    USER_MAP.add_argument(USER_UUID_HEADER, type=str, required=True, location='headers', help="User's UUID")
-    USER_MAP.add_argument(REQUEST_ID_HEADER, type=str, required=True, location='headers', help="Request UUID")
+    USER_MAP.add_argument(USER_UUID_HEADER, type=str, required=True, location='headers', help="User's UUID",
+                          default=DEFAULT_USER_UUID)
+    USER_MAP.add_argument(REQUEST_ID_HEADER, type=str, required=True, location='headers', help="Request UUID",
+                          default=DEFAULT_REQUEST_ID)
 
 
 class FibonacciNumberSchema(object):

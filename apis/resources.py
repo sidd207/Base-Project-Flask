@@ -33,6 +33,7 @@ class FibonacciNumber(Resource):
         return response
 
 
+@api.doc(parser=HeaderMap.USER_MAP)
 class Factorial(Resource):
 
     @api.expect(FactorialNumberSchema.factorial_parser, validate=True)
@@ -46,6 +47,7 @@ class Factorial(Resource):
         logger.info(response.message)
         return response
 
+@api.doc(parser=HeaderMap.USER_MAP)
 class AckermannFunction(Resource):
 
     @api.expect(AckermannSchema.ackermann_parser, validate=True)

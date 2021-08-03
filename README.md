@@ -32,6 +32,10 @@ How to deploy this flask application on AWS-
 (3) Create container service and deploy application
 
 
+Swagger Documentation of following apis will be available on this url(assuming you use port 5000)
+http://localhost:5000/api/v1/
+
+
 
 Assumptions-
 (1) I did not implemented any kind of authentication because it was not mention in the document but 
