@@ -10,6 +10,9 @@ from repository.models import FibonacciModel
 
 
 class FibonacciActivity(ActivityBase):
+    """
+    Fibonacci series number calculation activity class
+    """
 
     context_class = FibonacciContext
 
@@ -28,7 +31,8 @@ class FibonacciActivity(ActivityBase):
             response = FibonacciModel(**fib_number)
             self.response.data.append(response)
             self.response.success = True
-            self.response.message = "Sucessfully calcualted given position of  of fibonacci"
+            self.response.message = "Sucessfully calcualted given position of fibonacci series: "\
+                                    +str(self.context.number)
         except FibonacciCalculationException as e:
             logger.info('Exception occurs while trying to calculate fibanocci number {}'.format(e))
             error_code = FibonacciExecutionError.FIBONACCI_RUNTIME_ERROR

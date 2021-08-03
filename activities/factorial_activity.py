@@ -10,6 +10,9 @@ from repository.models import FactoriallModel
 
 
 class FactorialActivity(ActivityBase):
+    """
+    Factorial calculation of a given number activity class
+    """
 
     context_class = FactorialContext
 
@@ -28,7 +31,8 @@ class FactorialActivity(ActivityBase):
             response = FactoriallModel(**fac_number)
             self.response.data.append(response)
             self.response.success = True
-            self.response.message = "Sucessfully calcualted factorial of given number"
+            self.response.message = "Sucessfully calcualted factorial of given number: " \
+                                    +str(self.context.factorial_number)
         except FactorialCalculationException as e:
             logger.info('Exception occurs while trying to calculate factorial of a number {}'.format(e))
             error_code = FactorialExecutionError.FIBONACCI_RUNTIME_ERROR

@@ -38,9 +38,6 @@ class ActivityBase(ABC):
        self.context = None
        self.payload = {}
 
-       # if not self.context_class:
-       #     raise ActivityMisConfigured(ActivityErrorCodes.ACTIVITY_MISCONFIGURED_ATTRIBUTE,
-       #                                 {"attribute_name": "context_class"})
 
    def execute(self, payload={}, **kwargs):
        """

@@ -10,6 +10,9 @@ from repository.models import AckermannModel
 
 
 class AckermannlActivity(ActivityBase):
+    """
+    Ackermann Function activity class
+    """
 
     context_class = AckermannContext
 
@@ -28,7 +31,7 @@ class AckermannlActivity(ActivityBase):
             response = AckermannModel(**fac_number)
             self.response.data.append(response)
             self.response.success = True
-            self.response.message = "Sucessfully calcualted ackermann value of given numbers"
+            self.response.message = "Sucessfully calcualted ackermann function of given numbers"
         except AckermannCalculationException as e:
             logger.info('Exception occurs while trying to calculate ackermann value of given numbers {}'.format(e))
             error_code = AckermannExecutionError.ACKERMANN_RUNTIME_ERROR
